@@ -1,0 +1,93 @@
+{
+    "name": "crypto-technology/laravel-cryptocurrency",
+    "type": "library",
+    "description": "Laravel provider to have all cryptocurrency infos in a single package without using a database.",
+    "keywords": [
+        "laravel",
+        "lumen",
+        "currency",
+        "money",
+        "cryptocurrency",
+        "cryptocurrencies",
+        "cryptocoins",
+        "crypto-library",
+        "crypto"
+    ],
+    "license": "GPL-3.0",
+    "homepage": "https://cryptotech.srl",
+    "authors": [
+        {
+            "name": "Crypto Technology srl",
+            "email": "admin@cryptotech.srl",
+            "homepage": "https://cryptotech.srl",
+            "role": "Developer"
+        },
+        {
+            "name": "Luca Bognolo",
+            "email": "admin@bogny.eu",
+            "homepage": "https://bogny.eu",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "git@cryptotech.srl",
+        "issues": "https://github.com/crypto-technology/laravel-cryptocurrency/issues",
+        "wiki": "https://github.com/crypto-technology/laravel-cryptocurrency/wiki",
+        "source": "https://github.com/crypto-technology/laravel-cryptocurrency"
+    },
+    "require": {
+        "php": "~7.1|~7.2|~7.3",
+        "crypto-technology/cryptocurrency": "^0.2",
+        "illuminate/support": "5.6.*|5.7.*|5.8.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0|~8.0",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.6|~3.7|~3.8",
+        "roave/security-advisories": "master@dev",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CryptoTech\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CryptoTech\\Laravel\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "php-cs-fixer-win": "vendor\\bin\\php-cs-fixer fix --verbose --config=.\\.php_cs --path-mode=intersection .",
+        "php-cs-fixer-unix": "vendor/bin/php-cs-fixer fix --verbose --config=./.php_cs --path-mode=intersection ."
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CryptoTech\\Laravel\\CryptocurrencyServiceProvider"
+            ],
+            "aliases": {
+                "Cryptocurrency": "CryptoTech\\Laravel\\Facades\\Cryptocurrency"
+            }
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "archive": {
+        "exclude": [
+            "/vendor",
+            "/tests",
+            "/.editorconfig",
+            "/.gitattributes",
+            "/.gitignore",
+            "/.php_cs.dist",
+            "/.travis.yml"
+        ]
+    }
+}

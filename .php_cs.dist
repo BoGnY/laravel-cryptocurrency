@@ -1,0 +1,90 @@
+<?php
+
+$header = <<<EOF
+Laravel Cryptocurrency list package.
+Laravel provider to have all cryptocurrency infos in a
+single package without using a database.
+
+Copyright (C) 2018-2019 <Crypto Technology srl>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+EOF;
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true)
+    ->ignoreUnreadableDirs()
+    ->files()
+    ->name('*.php')
+    ->exclude(['.idea', 'tests', 'vendor']);
+
+$config = PhpCsFixer\Config::create()
+    ->setUsingCache(true)
+    ->setCacheFile(__DIR__.'/.php_cs.cache')
+    ->setFinder($finder)
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@PSR2' => true,
+        'align_multiline_comment' => ['comment_type' => 'phpdocs_only'],
+        'array_syntax' => ['syntax' => 'short'],
+        'combine_consecutive_issets' => true,
+        'combine_consecutive_unsets' => true,
+        'declare_strict_types' => true,
+        'dir_constant' => true,
+        'header_comment' => ['comment_type' => 'PHPDoc', 'header' => $header, 'location' => 'after_open', 'separate' => 'both'],
+        'is_null' => true,
+        'linebreak_after_opening_tag' => true,
+        'logical_operators' => true,
+        'mb_str_functions' => true,
+        'multiline_comment_opening_closing' => true,
+        'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'no_php4_constructor' => true,
+        'no_short_echo_tag' => true,
+        'no_superfluous_elseif' => true,
+        'no_unreachable_default_argument_value' => true,
+        'no_unset_on_property' => true,
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'not_operator_with_space' => true,
+        'not_operator_with_successor_space' => true,
+        'ordered_imports' => true,
+        'php_unit_method_casing' => true,
+        'php_unit_strict' => true,
+        'php_unit_test_annotation' => ['style' => 'prefix'],
+        'php_unit_test_case_static_method_calls' => true,
+        'phpdoc_add_missing_param_annotation' => ['only_untyped' => false],
+        'phpdoc_align' => ['tags' => ['return', 'throws', 'type', 'var']],
+        'phpdoc_annotation_without_dot' => false,
+        'phpdoc_order' => true,
+        'phpdoc_to_comment' => false,
+        'phpdoc_trim_consecutive_blank_line_separation' => true,
+        'phpdoc_types_order' => ['sort_algorithm' => 'none'],
+        'pow_to_exponentiation' => true,
+        'psr4' => true,
+        'random_api_migration' => true,
+        'single_blank_line_at_eof' => true,
+        'strict_comparison' => true,
+        'strict_param' => true,
+        'ternary_to_null_coalescing' => true,
+        'whitespace_after_comma_in_array' => true,
+    ]);
+
+PhpCsFixer\FixerFactory::create()
+    ->registerBuiltInFixers()
+    ->registerCustomFixers($config->getCustomFixers())
+    ->useRuleSet(new PhpCsFixer\RuleSet($config->getRules()));
+
+return $config;
